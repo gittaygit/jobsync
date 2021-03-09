@@ -1,0 +1,75 @@
+.parser-page-container {
+  padding: 0rem 2rem 2rem 2rem;
+}
+
+.header-container {
+  text-align: center;
+  font-size: 2rem;
+  letter-spacing: 0.4rem;
+}
+
+.text-area-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.text-area {
+  flex: 1;
+  text-align: center;
+}
+
+.text-area > h2 {
+  color: white;
+}
+
+.userinput {
+  border: 1px solid #282823;
+  border-radius: 10px;
+  outline: none;
+  max-width: 1120px;
+  width: 95%;
+  cursor: text;
+  color: black;
+}
+
+.button-div {
+  justify-content: center;
+  text-align: center;
+}
+
+.btn {
+  font-size: 20px;
+  margin-top: 2rem;
+  padding: 8px 20px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  height: 70px;
+  border-radius: 0px;
+}
+
+.animate-loading {
+  max-width: 100px;
+}
+
+.skills-section-wrapper {
+  display: flex;
+}
+
+.resume-skills > h2,
+.job-skills > h2 {
+  color: white;
+  text-align: center;
+}
+
+.resume-skills,
+.job-skills {
+  width: 50%;
+}
+
+@media screen and (max-width: 580px) {
+  .text-area-wrapper {
+    flex-direction: column;
+  }
+}
