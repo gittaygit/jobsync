@@ -27,11 +27,15 @@ def parse_skills():
     create request headers
     """
     headers = {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        "Access-Control-Allow-Origin": "http://127.0.0.1:5000/",
+        "Access-Control-Allow-Headers": "Content-Type",
+        "Access-Control-Allow-Methods": "POST"
     }
 
     r = requests.post(url=url, headers=headers, data=json.dumps(payload))
 
+    # uncomment to see what the response looks like
     # print(r.json())
 
     return r.json()
