@@ -1,11 +1,10 @@
 from flask import Flask, request
 from flask_cors import CORS
-import json
 import requests
+import json
 
 app = Flask(__name__)
 CORS(app)
-
 
 @app.route('/api/parse/skills', methods=['POST'])
 def parse_skills():
@@ -31,3 +30,4 @@ def parse_skills():
 
 if __name__ == '__main__':
     app.run()
+
