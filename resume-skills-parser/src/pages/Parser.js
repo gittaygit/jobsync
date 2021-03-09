@@ -3,6 +3,8 @@ import { parser } from "../api/api";
 import lottie from "lottie-web";
 import "../styles/Parser.css";
 import Skills from "../components/Skills";
+import Score from "../components/Score";
+import { findSimilarities } from "../utils/FindSimilarities";
 
 const Parser = () => {
   const [resumeSkillsList, setResumeSkillsList] = useState([]);
@@ -30,8 +32,6 @@ const Parser = () => {
       setLoading(true);
       const resp_resume = await parser(resumeSkills);
       const resp_job = await parser(jobSkills);
-      console.log(resp_resume);
-      console.log(resp_job);
       setLoading(false);
       setResumeSkillsList(resp_resume);
       setJobSkillsList(resp_job);
@@ -44,7 +44,9 @@ const Parser = () => {
   return (
     <div className="parser-page-container">
       <div className="header-container">
-        <h1>Job Sync</h1>
+        <h1>
+          <i className="fas fa-search"></i> Job Sync
+        </h1>
       </div>
       <div className="text-area-wrapper">
         <div className="text-area">
@@ -86,50 +88,27 @@ const Parser = () => {
         <div className="skills-section-wrapper">
           <div className="resume-skills">
             <h2>Results from Resume</h2>
-            <Skills skillsList={resumeSkillsList} />
+            {resumeSkillsList.length !== 0 ? (
+              <Skills skillsList={resumeSkillsList} />
+            ) : (
+              <span className="nothing-found-text">Nothing found</span>
+            )}
           </div>
           <div className="job-skills">
             <h2>Results from Requirements</h2>
-            <Skills skillsList={jobSkillsList} />
+            {jobSkillsList.length !== 0 ? (
+              <Skills skillsList={jobSkillsList} />
+            ) : (
+              <span className="nothing-found-text">Nothing found</span>
+            )}
           </div>
         </div>
       ) : null}
+      <div className="final-score">
+        <Score score={findSimilarities(resumeSkillsList, jobSkillsList)} />
+      </div>
     </div>
   );
 };
 
 export default Parser;
-
-/* <form
-className="file-upload"
-action="http://127.0.0.1:5000/api/parse/skills"
-method="POST"
-encType="multipart/form-data"
->
-<input
-  type="file"
-  name="fileUpload"
-  id="fileUpload"
-  accept=".pdf"
-  required
-/>
-<button id="upload" type="submit" className="btn btn-success mb-2">
-  Submit
-</button>
-</form> */
-
-// const file = document.getElementById("fileUpload").files[0];
-//     if (file) {
-//       let formData = new FormData();
-//       formData.append("file", file);
-//       console.log(formData);
-
-//       const resp = await axios.post("/api/parse/skills", {
-//         headers: { "Content-Type": "multipart/form-data" },
-//         body: formData,
-//       });
-//       console.log(resp.data);
-//     } else {
-//       console.log("nothing there");
-//       return;
-//     }

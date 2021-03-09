@@ -5,7 +5,7 @@
 .header-container {
   text-align: center;
   font-size: 2rem;
-  letter-spacing: 0.4rem;
+  color: whitesmoke;
 }
 
 .text-area-wrapper {
@@ -66,6 +66,19 @@
 .resume-skills,
 .job-skills {
   width: 50%;
+}
+
+.nothing-found-text {
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.final-score {
+  margin-top: 2rem;
+  font-size: 3rem;
+  color: #ccd6f6;
+  text-align: center;
 }
 
 @media screen and (max-width: 580px) {
